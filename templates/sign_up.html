@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="site-form has-text-centered has-background-light" method="post" style="margin-top: 120px">
+        <h1 class="title is-size-2 has-text-centered">Sign up</h1>
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="field">
+            <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+            {{ field }}
+        </div>
+        {% endfor %}
+        {{ form }}
+
+        <button type="submit" class="button is-primary is-fullwidh mt-3">Sign up</button>
+
+        <p class="content mt-3">
+            Already have an accont?
+            <span>
+                <a href="{% url 'sign_in' %}">sing in here</a>
+            </span>
+        </p>
+    </form>
+{% endblock %}

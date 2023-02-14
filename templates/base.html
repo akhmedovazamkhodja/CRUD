@@ -1,0 +1,100 @@
+{% load static %}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'cource.css' %}">
+    <link rel="stylesheet" href="{% static 'bulma.css' %}">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
+        integrity="sha512-HqxHUkJM0SYcbvxUw5P60SzdOTy/QVwA1JJrvaXJv4q7lmbDZCmZaqz01UPOaQveoxfYRv1tHozWGPMcuTBuvQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
+        integrity="sha512-HqxHUkJM0SYcbvxUw5P60SzdOTy/QVwA1JJrvaXJv4q7lmbDZCmZaqz01UPOaQveoxfYRv1tHozWGPMcuTBuvQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
+        integrity="sha512-HqxHUkJM0SYcbvxUw5P60SzdOTy/QVwA1JJrvaXJv4q7lmbDZCmZaqz01UPOaQveoxfYRv1tHozWGPMcuTBuvQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <section class="hero has-background-info is-fullheight">
+        <div class="hero-head">
+            <header class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="{% url 'article_func' %}">
+                            <img src="{% static 'images/monday.svg' %}" width="100" alt="Logo">
+                        </a>
+                        <span class="navbar-burger" data-target="navbarMenuHeroC">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenuHeroC" class="navbar-menu">
+            
+                        <div class="navbar-start">
+                            {% if user.is_authenticated %}
+                            <span class="navbar-item">
+                                <a href="{% url 'article_create' %}" class="button is-info is-outlined is-inverted">
+                                    <span class="mr-2">
+                                        <ion-icon name="book-outline"></ion-icon>
+                                    </span>
+                                    <span>
+                                        создать пост
+                                    </span>
+                                </a>
+                            </span>
+                            {% endif %}
+                        </div>
+                        <div class="navbar-end">
+                        {% if user.is_authenticated %}
+                        <a class="navbar_item button my-4 mx-1">
+                            welcome: {{ user }}
+                        </a>
+
+                        <form action="{% url 'article_func' %}" method="get">
+                            <div class="field has-addons mt-4 mr-2">
+                                <div class="control">
+                                    <input type="search" class="input" placeholder="Find an article" name="search">
+                                </div>
+                                <div class="control">
+                                    <button class="button is-primary" type="submit">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <span class="navbar-item">
+                            <a href="{% url 'sign_out' %}" class="button is-warning">sign_out</a>
+                        </span>
+                        {% else %}
+                        <span class="navbar-item">
+                            <a href="{% url 'sign_in' %}" class="button is-warning">sign_in</a>
+                        </span>
+                        {% endif %}
+                        </div>
+
+
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="hero-body">
+            {% block content %}
+
+
+            {% endblock %}
+        </div>
+    </section>
+
+
+
+</body>
+
+</html>

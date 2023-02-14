@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post" class="site-form has-background-light">
+    {% csrf_token %}
+    <p class="content has-text-centered is-size-4 mb-4">
+        Вы действительно хотите удалить комментарий? "{{ article }}"?</p>
+    <div class="has-text-centered">
+        <button type="submit" class="button is-primary">Подвердить</button>
+        <a href="{% url 'article_detail' comment.article.slug %}" class="button is-danger">Отмена</a>
+    </div>
+    </form>
+{% endblock %}
