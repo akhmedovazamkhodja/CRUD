@@ -42,7 +42,10 @@
                 {% for comment in article.comment_set.all %}
                 <article class="message is-info">
                     <div class="message-header">
-                        Added by {{ comment.user }} at {{ comment.date_added }}
+
+                        {% if user == comment.user %}
+
+                        Added by you at {{ comment.date_added }}
 
                         <div class="has-text-right is-size-5">
 
@@ -56,7 +59,9 @@
                             </a>
 
                         </div>
-
+                        {% else %}
+                        Added by {{ comment.user }} at {{ comment.date_added }}
+                        {% endif %}
                     </div>
                     <div class="message-body">{{ comment.body }}</div>
                 </article>

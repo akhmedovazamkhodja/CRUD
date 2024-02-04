@@ -10,10 +10,8 @@
             {{ field }}
         </div>
         {% endfor %}
-
-        {{form}}
         <button class="button is-primary is-fullwidh mt-4" type="submit">Sign in</button>
         <br>
-        <a href="{% url 'sign_in' %}" class="is_vcentered is_info">ro'rxatdan o'tish</a>
+        <a href="{% url 'sign_up' %}" class="is_vcentered is_info">ro'rxatdan o'tish</a>
     </form>
 {% endblock %}

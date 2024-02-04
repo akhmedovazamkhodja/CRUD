@@ -12,5 +12,5 @@ urlpatterns = [
     path('<slug>/dislike', dislike_article, name='article_dislike'),
 
     path('<slug>/delete/<int:pk>', comment_delete, name='comment_delete'),
-    path('<slug>/edit/<int:pk>', comment_edit, name='comment_edit')
+    path('<slug>/edit/<int:pk>', comment_edit, name='comment_edit'),
 ]
